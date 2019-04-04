@@ -43,6 +43,8 @@ class UserPostsController extends Controller
     public function actionIndex($user_id)
     {
         $user = $this->findUserModel($user_id);
+        $popular = PostSearch::getPopular();
+        $recent = PostSearch::getRecent();
 
         $dataProvider = new ActiveDataProvider([
             'query' => Post::find()->forUser($user->id)->orderBy(['id' => SORT_DESC]),
@@ -51,6 +53,9 @@ class UserPostsController extends Controller
         return $this->render('index', [
             'user' => $user,
             'dataProvider' => $dataProvider,
+            'popular'=>$popular,
+            'recent'=>$recent,
+            'categories'=>$categories,
 
         ]);
     }
@@ -62,6 +67,7 @@ class UserPostsController extends Controller
         $recent = PostSearch::getRecent();
         $comments = $post->getPostComments();
         $commentForm = new CommentForm();
+        $post->viewedCounter();
 
         //$post->viewedCounter();
         return $this->render('view', [

@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use frontend\models\ImageUpload;
 use common\models\query\PostQuery;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
@@ -183,6 +184,11 @@ class Post extends ActiveRecord implements Linkable
     public function getAuthor()
     {
         return $this->hasOne(User::className(), ['id'=>'user_id']);
+    }
+        public function viewedCounter()
+    {
+        $this->viewed += 1;
+        return $this->save(false);
     }
 
 }

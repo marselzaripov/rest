@@ -18,10 +18,12 @@ class PostsController extends Controller
 {
     public function actionIndex()
     {
+       
         $searchModel = new PostSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $popular = PostSearch::getPopular();
         $recent = PostSearch::getRecent();
+       
 
         return $this->render('index', [
             'searchModel' => $searchModel,
@@ -30,6 +32,8 @@ class PostsController extends Controller
             'recent'=>$recent,
             'categories'=>$categories,
         ]);
+
+
 
 
     }
