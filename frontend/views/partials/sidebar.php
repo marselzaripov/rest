@@ -45,12 +45,12 @@ use yii\helpers\Url;
         <aside class="widget border pos-padding">
             <h3 class="widget-title text-uppercase text-center">Категории</h3>
             <ul>
-                <?/*php foreach($categories as $category):?>
+                <?php foreach($categories as $category):?>
                     <li>
-                        <a href="<?= Url::toRoute(['site/category','id'=>$category->id]);?>"><?= $category->title?></a>
-                        <span class="post-count pull-right"> (<?= $category->getArticlesCount();?>)</span>
+                        <a href="posts/category?id=<?=$category->id;?>"><?= $category->title?></a>
+                        <span class="post-count pull-right"> (<?= $category->getPostsCount();?>)</span>
                     </li>
-                <?php endforeach;*/?>
+                <?php endforeach;?>
 
             </ul>
         </aside>

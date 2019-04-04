@@ -41,7 +41,7 @@ return [
             'showScriptName' => false,
             'rules' => [
                 '' => 'posts/index',
-
+        
                 'users/<user_id:\d+>/posts' => 'user-posts/index',
                 'users/<user_id:\d+>/posts/<id:\d+>' => 'user-posts/view',
                 'users/<user_id:\d+>/posts/<id:\d+>/<_a:[\w-]+>' => 'user-posts/<_a>',

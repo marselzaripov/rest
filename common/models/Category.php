@@ -69,7 +69,7 @@ class Category extends \yii\db\ActiveRecord
         $pagination = new Pagination(['totalCount' => $count, 'pageSize'=>6]);
 
         // limit the query using the pagination and retrieve the articles
-        $articles = $query->offset($pagination->offset)
+        $posts = $query->offset($pagination->offset)
             ->limit($pagination->limit)
             ->all();
 

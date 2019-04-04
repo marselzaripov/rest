@@ -12,6 +12,7 @@ use common\models\CommentForm;
 use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
+use common\models\Post;
 
 /**
  * Site controller
@@ -178,6 +179,23 @@ class SiteController extends Controller
         ]);
     }
     
+        public function actionCategory($id)
+    {
+
+        $data = Category::getArticlesByCategory($id);
+        $popular = Post::getPopular();
+        $recent = Post::getRecent();
+        $categories = Category::getAll();
+        
+        return $this->render('category',[
+            'post'=>$data['post'],
+            'pagination'=>$data['pagination'],
+            'popular'=>$popular,
+            'recent'=>$recent,
+            'categories'=>$categories
+        ]);
+    }
+
     public function actionComment($id)
     {
         $model = new CommentForm();

@@ -4,6 +4,7 @@ namespace frontend\controllers;
 
 use Yii;
 use common\models\User;
+use common\models\Category;
 use common\models\Post;
 use frontend\models\UserSearch;
 use yii\web\Controller;
@@ -16,6 +17,7 @@ class UsersController extends Controller
         $searchModel = new UserSearch();
         $popular = Post::getPopular();
         $recent = Post::getRecent();
+        $categories = Category::getAll();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -33,6 +35,7 @@ class UsersController extends Controller
     {
         $popular = Post::getPopular();
         $recent = Post::getRecent();
+        $categories = Category::getAll();
 
         return $this->render('view', [
             'model' => $this->findModel($id),

@@ -9,6 +9,7 @@ use common\models\Post;
 use frontend\models\PostSearch;
 use common\models\Comment;
 use common\models\CommentForm;
+use common\models\Category;
 use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -45,6 +46,7 @@ class UserPostsController extends Controller
         $user = $this->findUserModel($user_id);
         $popular = PostSearch::getPopular();
         $recent = PostSearch::getRecent();
+        $categories = Category::getAll();
 
         $dataProvider = new ActiveDataProvider([
             'query' => Post::find()->forUser($user->id)->orderBy(['id' => SORT_DESC]),
@@ -68,6 +70,7 @@ class UserPostsController extends Controller
         $comments = $post->getPostComments();
         $commentForm = new CommentForm();
         $post->viewedCounter();
+        $categories = Category::getAll();
 
         //$post->viewedCounter();
         return $this->render('view', [

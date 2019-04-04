@@ -23,6 +23,7 @@ class PostsController extends Controller
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $popular = PostSearch::getPopular();
         $recent = PostSearch::getRecent();
+        $categories = Category::getAll();
        
 
         return $this->render('index', [
@@ -78,5 +79,22 @@ class PostsController extends Controller
         }
 
         return $this->render('image', ['model'=>$model]);
+    }
+
+        public function actionCategory($id)
+    {
+
+        $data = Category::getPostsByCategory($id);
+        $popular = Post::getPopular();
+        $recent = Post::getRecent();
+        $categories = Category::getAll();
+        
+        return $this->render('category',[
+            'posts'=>$data['posts'],
+            'pagination'=>$data['pagination'],
+            'popular'=>$popular,
+            'recent'=>$recent,
+            'categories'=>$categories
+        ]);
     }
 }
