@@ -30,11 +30,11 @@ use yii\widgets\LinkPager;
                                     <h1 class="entry-title"><a href="<?= Url::toRoute(['site/view','id'=>$article->id]);?>">Home is peaceful place</a></h1>
                                 </header>
                                 <div class="entry-content">
-                                    <p><?= $post->description?>
+                                    <p><?= $post->content?>
                                     </p>
                                 </div>
                                 <div class="social-share">
-                                    <span class="social-share-title pull-left text-capitalize">By <?= $post->author->name;?> On <?= $post->getDate();?></span>
+                                    <span class="social-share-title pull-left text-capitalize">By <?= $post->author->username;?> On <?= $post->getDate();?></span>
 
                                 </div>
                             </div>
