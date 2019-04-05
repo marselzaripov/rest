@@ -19,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?php if (Yii::$app->user->can(Rbac::MANAGE_PROFILE, ['user' => $model])): ?>
         <p class="pull-right">
-            <?= Html::a('Profile', ['profile/index'], ['class' => 'btn btn-primary']) ?>
+            <?= Html::a('Профиль', ['profile/index'], ['class' => 'more-link-1']) ?>
         </p>
     <?php endif; ?>
 
@@ -32,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
 
     <p class="pull-right">
-        <?= Html::a('Create Post', ['user-posts/create', 'user_id' => $model->id], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Новая статья', ['user-posts/create', 'user_id' => $model->id], ['class' => 'more-link-1']) ?>
     </p>
 
     <h2>My Recent Posts</h2>

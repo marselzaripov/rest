@@ -342,6 +342,26 @@ a.more-link:hover {
     border-color: #00BFF3;
 }
 
+a.more-link-1 {
+    font-size: 12px;
+    letter-spacing: 1px;
+    overflow: hidden;
+    padding: 7px 20px;
+    text-decoration: none;
+    display: inline-block;
+    color: #00BFF3;
+    border: 1px solid #ddd;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+    background-color: #fff;
+}
+
+a.more-link-1:hover {
+    background: #00BFF3;
+    color: #fff;
+    border-color: #00BFF3;
+}
+
 .post {
     background: #fff;
     margin-bottom: 50px;
@@ -1184,8 +1204,7 @@ blog css
 
 .bottom-comment {
     background: #fff;
-    padding: 20px;
-    margin: 50px 0;
+    padding: 5px;
     color: #212121;
     overflow: hidden;
 }

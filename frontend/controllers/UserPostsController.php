@@ -89,6 +89,9 @@ class UserPostsController extends Controller
     public function actionCreate($user_id)
     {
         $user = $this->findUserModel($user_id);
+        $popular = Post::getPopular();
+        $recent = Post::getRecent();
+        $categories = Category::getAll();
 
         if ($user->id != Yii::$app->user->id) {
             throw new ForbiddenHttpException('Forbidden.');
@@ -103,6 +106,9 @@ class UserPostsController extends Controller
             return $this->render('create', [
                 'user' => $user,
                 'model' => $model,
+                'popular'=>$popular,
+                'recent'=>$recent,
+                'categories'=>$categories,
             ]);
         }
     }
@@ -111,6 +117,9 @@ class UserPostsController extends Controller
     {
         $user = $this->findUserModel($user_id);
         $model = $this->findPostModel($user_id, $id);
+        $popular = Post::getPopular();
+        $recent = Post::getRecent();
+        $categories = Category::getAll();
 
         if (!Yii::$app->user->can(Rbac::MANAGE_POST, ['post' => $model])) {
             throw new ForbiddenHttpException('Forbidden.');
@@ -122,6 +131,9 @@ class UserPostsController extends Controller
             return $this->render('update', [
                 'user' => $user,
                 'model' => $model,
+                'popular'=>$popular,
+                'recent'=>$recent,
+                'categories'=>$categories,
             ]);
         }
     }

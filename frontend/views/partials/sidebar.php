@@ -47,7 +47,7 @@ use yii\helpers\Url;
             <ul>
                 <?php foreach($categories as $category):?>
                     <li>
-                        <a href="posts/category?id=<?=$category->id;?>"><?= $category->title?></a>
+                        <a href="/posts/category?id=<?=$category->id;?>"><?= $category->title?></a>
                         <span class="post-count pull-right"> (<?= $category->getPostsCount();?>)</span>
                     </li>
                 <?php endforeach;?>

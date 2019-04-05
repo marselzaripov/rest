@@ -8,6 +8,8 @@ use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use common\models\Post;
+use common\models\Category;
 
 class ProfileController extends Controller
 {
@@ -35,13 +37,19 @@ class ProfileController extends Controller
     public function actionIndex()
     {
         $model = $this->findModel();
+        $popular = Post::getPopular();
+        $recent = Post::getRecent();
+        $categories = Category::getAll();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('index', [
-            'model' => $model,
+                'model' => $model,
+                'popular'=>$popular,
+                'recent'=>$recent,
+                'categories'=>$categories,
         ]);
     }
 

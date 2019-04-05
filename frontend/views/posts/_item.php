@@ -31,7 +31,7 @@ use yii\helpers\Url;
     <?endif;?>
     <div class="post-content">
         <header class="entry-header text-center text-uppercase">
-            <h6><a href="<?= Url::toRoute(['site/category','id'=>$model->category->id])?>"> <?= $model->category->title; ?></a></h6>
+            <h6><a href="posts/category?id=<?= $model->category->id;?>"> <?= $model->category->title; ?></a></h6>
 
             <h1 class="entry-title"><a href="<?= Url::toRoute(['user-posts/view', 'user_id' => $model->user_id, 'id' => $model->id]);?>"><?= $model->title?></a></h1>
 

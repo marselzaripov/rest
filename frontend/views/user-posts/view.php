@@ -23,11 +23,11 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?php if (Yii::$app->user->can(Rbac::MANAGE_POST, ['post' => $model])): ?>
         <p class="pull-right">
-            <?= Html::a('Update', ['update', 'user_id' => $model->user_id, 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-            <?= Html::a('Delete', ['delete', 'user_id' => $model->user_id, 'id' => $model->id], [
-                'class' => 'btn btn-danger',
+            <?= Html::a('Изменить', ['update', 'user_id' => $model->user_id, 'id' => $model->id], ['class' => 'more-link-1']) ?>
+            <?= Html::a('Удалить', ['delete', 'user_id' => $model->user_id, 'id' => $model->id], [
+                'class' => 'more-link-1',
                 'data' => [
-                    'confirm' => 'Are you sure you want to delete this item?',
+                    'confirm' => 'Вы действительно хотите удалить данную публикацию?',
                     'method' => 'post',
                 ],
             ]) ?>

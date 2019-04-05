@@ -40,6 +40,8 @@ class Post extends ActiveRecord implements Linkable
         return [
             [['content'], 'string'],
             [['title'], 'string', 'max' => 255],
+            [['date'], 'string'],
+            [['category_id'], 'integer'],
         ];
     }
 
@@ -48,11 +50,14 @@ class Post extends ActiveRecord implements Linkable
         return [
             'id' => 'ID',
             'user_id' => 'User ID',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
-            'title' => 'Title',
-            'content' => 'Content',
-            'category_id' => 'Category ID',
+            'created_at' => 'Создано',
+            'updated_at' => 'Изменено',
+            'title' => 'Название',
+            'content' => 'Статья',
+            'category_id' => 'Категории',
+            'date' => '',
+            'image' => 'Картинка',
+            'viewed' => 'Просмотров',
         ];
     }
 
@@ -123,12 +128,12 @@ class Post extends ActiveRecord implements Linkable
 
     public static function getPopular()
     {
-        return Post::find()->orderBy('viewed desc')->limit(3)->all();
+        return Post::find()->orderBy('viewed desc')->limit(5)->all();
     }
 
     public static function getRecent()
     {
-        return Post::find()->orderBy('date asc')->limit(4)->all();
+        return Post::find()->orderBy('date asc')->limit(5)->all();
     }
 
 
