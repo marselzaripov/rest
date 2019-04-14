@@ -17,7 +17,8 @@ class m170124_021622_create_comment_table extends Migration
             'text'=>$this->string(),
             'user_id'=>$this->integer(),
             'post_id'=>$this->integer(),
-            'status'=>$this->integer()
+            'status'=>$this->integer(),
+            'dialog'=>$this->integer()
         ]);
 
         // creates index for column `user_id`

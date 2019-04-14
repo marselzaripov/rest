@@ -3,7 +3,7 @@
     <?php foreach($comments as $comment):?>
         <div class="bottom-comment"><!--bottom comment-->
             <div class="comment-img">
-                <img width="50" class="img-circle" src="<?= $comment->user->image;?>" alt="">
+                <img width="50" class="img-circle" src="/uploads/<? if(!empty($comment->user->image)){echo $comment->user->image;}else{echo "no-image.png";};?>" alt="">
             </div>
 
             <div class="comment-text">
@@ -23,7 +23,7 @@
 <?php endif;?>
 <!-- end bottom comment-->
 
-<?php if(!Yii::$app->user->isGuest):?>
+<?php if((!Yii::$app->user->isGuest)/*&&(Yii::$app->user->id==$model->user_id)*/):?>
     <div class="leave-comment"><!--leave comment-->
         <h4>Leave a reply</h4>
         <?php if(Yii::$app->session->getFlash('comment')):?>
@@ -39,7 +39,7 @@
                 <?= $form->field($commentForm, 'comment')->textarea(['class'=>'form-control','placeholder'=>'Write Message'])->label(false)?>
             </div>
         </div>
-        <button type="submit" class="btn send-btn">Post Comment</button>
+        <button type="submit" class="btn send-btn">Комментировать</button>
         <?php \yii\widgets\ActiveForm::end();?>
     </div><!--end leave comment-->
 <?php endif;?>

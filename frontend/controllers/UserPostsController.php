@@ -62,23 +62,23 @@ class UserPostsController extends Controller
         ]);
     }
 
-    public function actionView($user_id, $id)
+    public function actionView($id)
     {
-	    $post = Post::findOne($id);
+	   /*$post = Post::findOne($id);*/
         $popular = PostSearch::getPopular();
         $recent = PostSearch::getRecent();
-        $comments = $post->getPostComments();
+       /* $comments = $post->getPostComments($user_id);
         $commentForm = new CommentForm();
-        $post->viewedCounter();
+        $post->viewedCounter();*/
         $categories = Category::getAll();
-
-        //$post->viewedCounter();
+        $model = Post::findOne($id);
+        $model->viewedCounter();
         return $this->render('view', [
-            'user' => $this->findUserModel($user_id),
-            'model' => $this->findPostModel($user_id, $id),
+            /*'user' => $this->findUserModel($user_id),*/
+            'model' => $model,
             'post'=>$post,
-            'comments'=>$comments,
-            'commentForm'=>$commentForm,
+            /*'comments'=>$comments,
+            'commentForm'=>$commentForm,*/
             'popular'=>$popular,
             'recent'=>$recent,
             'categories'=>$categories,

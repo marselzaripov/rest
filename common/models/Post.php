@@ -181,9 +181,13 @@ class Post extends ActiveRecord implements Linkable
         return $this->hasMany(Comment::className(), ['post_id'=>'id']);
     }
 
-    public function getPostComments()
+    public function getPostComments($user_id)
     {
+        if(Yii::$app->user->id==$user_id){
         return $this->getComments()->where(['status'=>1])->all();
+        }else{
+        return $this->getComments()->where(['status'=>1])->where(['user_id'=>Yii::$app->user->id])->where(['user_id'=>$user_id])->all();
+        }
     }
 
     public function getAuthor()

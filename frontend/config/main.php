@@ -9,9 +9,27 @@ $params = array_merge(
 return [
     'id' => 'app-frontend',
     'basePath' => dirname(__DIR__),
+    'language' => 'ru-RU',
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
+    'modules' => [
+        'comment' => [
+            'class' => 'yii2mod\comments\Module',
+        ],
+    ],
     'components' => [
+        'i18n' => [
+            'translations' => [
+                'yii2mod.settings' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    'basePath' => '/vendor/yii2mod/settings/messages',
+                ],
+                'yii2mod.comments' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    'basePath' => '/vendor/yii2mod/comments/messages',
+                ],
+            ],
+        ],
         'request' => [
             'csrfParam' => '_csrf-frontend',
         ],
