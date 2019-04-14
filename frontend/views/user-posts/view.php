@@ -21,7 +21,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="col-md-8">
 <div class="post-view">
 
-    <?/*php if (Yii::$app->user->can(Rbac::MANAGE_POST, ['post' => $model])): ?>
+    <?php if (Yii::$app->user->can(Rbac::MANAGE_POST, ['post' => $model])): ?>
         <p class="pull-right">
             <?= Html::a('Изменить', ['update', 'user_id' => $model->user_id, 'id' => $model->id], ['class' => 'more-link-1']) ?>
             <?= Html::a('Удалить', ['delete', 'user_id' => $model->user_id, 'id' => $model->id], [
@@ -32,11 +32,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 ],
             ]) ?>
         </p>
-    <?php endif; */?>
+    <?php endif; ?>
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <img src="<?/*= $model->getImage();*/?>" alt="">
+    <img src="<?= $model->getImage();?>" alt="">
 
     <?/*= DetailView::widget([
         'model' => $model,
